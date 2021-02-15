@@ -1,0 +1,45 @@
+---
+title: "Assignment2_leaflet_map"
+author: "PD"
+date: "14/02/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Executive Summary
+This assignment requires the use of creating a map using leaflet and host it on a webpage. I have used a map to show some key tourist attractions in and around Toronto:
+1. CN Tower
+2. Hockey Hall of Fame
+3. Royal Ontario Museum
+4. Rogers Centre
+5. Art Gallery of Ontario
+6. Niagara Falls
+7. Toronto Zoo
+8. Casa Loma
+9. Distillery District
+10. Toronto Islands
+
+## Creating the map
+```{r}
+library(leaflet)
+
+toronto_icon <- makeIcon(
+  iconUrl = "https://www.academy.ca/wp-content/uploads/2017/12/city-of-toronto-logo.jpg",
+  iconWidth = 31*215/230, iconHeight = 31,
+  iconAnchorX = 31*215/230/2,iconAnchorY = 16
+)
+
+tourist_locations <- data.frame(
+  lat = c(43.6425662,43.6472761,43.6677136,43.6417837,43.6536105,43.054098, 43.8206661,43.678041,43.6505459,43.6230536),
+  lng = c(-79.3870568,-79.3798789,-79.3969658,-79.3913324,-79.394701,-79.2281217,-79.1836964,-79.4116326,-79.3617047,-79.394696)
+)
+
+tourist_locations %>%
+  leaflet() %>%
+  addTiles() %>%
+  addMarkers(icon=toronto_icon,popup=c("CN Tower","Hockey Hall of Fame","Royal Ontario Museum","Rogers Center","Art Gallery of Ontario","Niagara Falls","Toronto Zoo","Casa Loma","Distillery District","Toronto Islands"))
+          
+```
