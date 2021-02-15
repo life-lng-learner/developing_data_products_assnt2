@@ -22,7 +22,7 @@ This assignment requires the use of creating a map using leaflet and host it on 
 9. Distillery District
 10. Toronto Islands
 
-## Creating the map
+## Tourist Attractions - Toronto
 ```{r}
 library(leaflet)
 
